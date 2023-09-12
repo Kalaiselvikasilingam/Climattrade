@@ -1,0 +1,859 @@
+{
+	"info": {
+		"_postman_id": "0c156602-94bf-4801-af46-cdf5b47dabcf",
+		"name": "Climattrade",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24758214"
+	},
+	"item": [
+		{
+			"name": "Signup",
+			"item": [
+				{
+					"name": "Email_exists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 3000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Message indicates Email already exists, please try another.\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.eql(\"Email already exists, please try another.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\":\"Kalai\",\r\n    \"lastname\":\"Selvi\",\r\n    \"emailaddress\":\"kkalaiselvi1709@gmail.com\",\r\n    \"password\":\"Cybrain!123\",\r\n    \"confirmpassword\":\"Cybrain!123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{suburl}}/createaccount",
+							"host": [
+								"{{suburl}}"
+							],
+							"path": [
+								"createaccount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid_email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 3000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Message indicates Email is should be in valid format field\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.eql(\"Email is should be in valid format field\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\":\"Kalai\",\r\n    \"lastname\":\"Selvi\",\r\n    \"emailaddress\":\"kkalaiselvi1709\",\r\n    \"password\":\"Cybrain!123\",\r\n    \"confirmpassword\":\"Cybrain!123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{suburl}}/createaccount",
+							"host": [
+								"{{suburl}}"
+							],
+							"path": [
+								"createaccount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Password_validation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 3000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Message indicates Password & Confirm Password do not match\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.eql(\"Password & Confirm Password do not match\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\":\"Kalai\",\r\n    \"lastname\":\"Selvi\",\r\n    \"emailaddress\":\"kkalaiselvi1709@gmail.com\",\r\n    \"password\":\"weak123\",\r\n    \"confirmpassword\":\"Cybrain!123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{suburl}}/createaccount",
+							"host": [
+								"{{suburl}}"
+							],
+							"path": [
+								"createaccount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "First_name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 3000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Message indicates Firstname is required\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.eql(\"Firstname is required\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\":\"\",\r\n    \"lastname\":\"test\",\r\n    \"emailaddress\":\"kkalaiselvi1709\",\r\n    \"password\":\"Cybrain!123\",\r\n    \"confirmpassword\":\"Cybrain!123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{suburl}}/createaccount",
+							"host": [
+								"{{suburl}}"
+							],
+							"path": [
+								"createaccount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Last_name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 3000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Message indicates Lastname is required\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.eql(\"Lastname is required\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\":\"kalai\",\r\n    \"lastname\":\"\",\r\n    \"emailaddress\":\"kkalaiselvi1709\",\r\n    \"password\":\"Cybrain!123\",\r\n    \"confirmpassword\":\"Cybrain!123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{suburl}}/createaccount",
+							"host": [
+								"{{suburl}}"
+							],
+							"path": [
+								"createaccount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Email_required",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 3000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Message indicates Email is required field\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.eql(\"Email is required field\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\":\"Kalai\",\r\n    \"lastname\":\"Selvi\",\r\n    \"emailaddress\":\"\",\r\n    \"password\":\"Cybrain!123\",\r\n    \"confirmpassword\":\"Cybrain!123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{suburl}}/createaccount",
+							"host": [
+								"{{suburl}}"
+							],
+							"path": [
+								"createaccount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pwd_required",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 3000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Message indicates Password is required\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.eql(\"Password is required\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\":\"Kalai\",\r\n    \"lastname\":\"Selvi\",\r\n    \"emailaddress\":\"kkalaiselvi1709@gmail.com\",\r\n    \"password\":\"\",\r\n    \"confirmpassword\":\"Cybrain!123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{suburl}}/createaccount",
+							"host": [
+								"{{suburl}}"
+							],
+							"path": [
+								"createaccount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Con_pwd_req",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 3000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Message indicates Confirm Password is required\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.eql(\"Confirm Password is required\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\":\"Kalai\",\r\n    \"lastname\":\"Selvi\",\r\n    \"emailaddress\":\"kkalaiselvi1709@gmail.com\",\r\n    \"password\":\"Test\",\r\n    \"confirmpassword\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{suburl}}/createaccount",
+							"host": [
+								"{{suburl}}"
+							],
+							"path": [
+								"createaccount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Positive_Scenerio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 3000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"pm.test(\"Response should contain user profile data\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"kalai2\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"test2\");\r",
+									"    pm.expect(pm.response.text()).to .include(\"kalaiselvi@cybrain.co.in\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"2023-07-26 11:12:21\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"kalai2 test2\");\r",
+									"});\r",
+									"pm.test(\"User profile data is valid\", function () {\r",
+									"    var userProfile = pm.response.json().data;\r",
+									"    pm.expect(userProfile.user_login).to.eql('kalaiselvi@cybrain.co.in');\r",
+									"    pm.expect(userProfile.firstname).to.eql(\"kalai2\");\r",
+									"    pm.expect(userProfile.lastname).to.eql(\"test2\");\r",
+									"    pm.expect(userProfile.display_name).to.eql(\"kalai2 test2\");\r",
+									"});\r",
+									"pm.test(\"Message indicates successful profile retrieval\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.eql(\"Logged in successfully\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"useremail\":\"kalaiselvi@cybrain.co.in\",\r\n    \"userpassword\":\"Cybrain!123\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{suburl}}/userlogin",
+							"host": [
+								"{{suburl}}"
+							],
+							"path": [
+								"userlogin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Account_verification",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 3000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"pm.test(\"Message indicates user logged in correctly on his account \", function () {\r",
+									"    var userProfile = pm.response.json().data;\r",
+									"    pm.expect(userProfile.firstname).to.eql('kalai2');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"useremail\":\"kalaiselvi@cybrain.co.in\",\r\n    \"userpassword\":\"Cybrain!123\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{suburl}}/userlogin",
+							"host": [
+								"{{suburl}}"
+							],
+							"path": [
+								"userlogin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Wrong_email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 3000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"pm.test(\"Message indicates Invalid email/password\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.eql(\"Invalid email/password\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"useremail\":\"kalaiselv@cybrain.co.in\",\r\n    \"userpassword\":\"Cybrain!123\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{suburl}}/userlogin",
+							"host": [
+								"{{suburl}}"
+							],
+							"path": [
+								"userlogin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Wrong_pwd",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 3000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"pm.test(\"Message indicates Invalid email/password\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.eql(\"Invalid email/password\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"useremail\":\"kalaiselv@cybrain.co.in\",\r\n    \"userpassword\":\"Cybrn!123\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{suburl}}/userlogin",
+							"host": [
+								"{{suburl}}"
+							],
+							"path": [
+								"userlogin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sidebarmenu",
+			"item": [
+				{
+					"name": "Positive_Scenerio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{suburl}}/sidebarmenus",
+							"host": [
+								"{{suburl}}"
+							],
+							"path": [
+								"sidebarmenus"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Getuserprofile",
+			"item": [
+				{
+					"name": "Positive_Scenerio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 3000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"pm.test(\"Response should contain user profile data\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"kalaiselvi@cybrain.co.in\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"kalai2 test2\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"Address2\");\r",
+									"    pm.expect(pm.response.text()).to .include(\"india12\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"test123\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"kalai2\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"test2\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"cybrain12\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"test12\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"63614112\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"12356678902\");\r",
+									"});\r",
+									"pm.test(\"User profile data is valid\", function () {\r",
+									"    var userProfile = pm.response.json().data;\r",
+									"    pm.expect(userProfile.userlogin).to.eql('kalaiselvi@cybrain.co.in');\r",
+									"    pm.expect(userProfile.company).to.eql(\"cybrain12\");\r",
+									"    pm.expect(userProfile.country).to.eql(\"india12\");\r",
+									"    pm.expect(userProfile.userlogin).to.eql(\"kalaiselvi@cybrain.co.in\");\r",
+									"    pm.expect(userProfile.display_name).to.eql(\"kalai2 test2\");\r",
+									"    pm.expect(userProfile.firstname).to.eql(\"kalai2\");\r",
+									"    pm.expect(userProfile.lastname).to.eql(\"test2\");\r",
+									"    pm.expect(userProfile.company).to.eql(\"cybrain12\");\r",
+									"    pm.expect(userProfile.streetaddress).to.eql(\"Address2\");\r",
+									"    pm.expect(userProfile.country).to.eql(\"india12\");\r",
+									"    pm.expect(userProfile.state).to.eql(\"test123\");\r",
+									"    pm.expect(userProfile.city).to.eql(\"test12\");\r",
+									"    pm.expect(userProfile.postcode).to.eql(\"63614112\");\r",
+									"    pm.expect(userProfile.mobileno).to.eql(\"12356678902\");\r",
+									"});\r",
+									"pm.test(\"Message indicates successful profile retrieval\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.eql(\"Profile retrieved successfully\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{suburl}}/profile?userid=31",
+							"host": [
+								"{{suburl}}"
+							],
+							"path": [
+								"profile"
+							],
+							"query": [
+								{
+									"key": "userid",
+									"value": "31"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Changepassword",
+			"item": [
+				{
+					"name": "Positive_Scenerio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"User ID is valid\", function () {\r",
+									"    pm.expect(pm.response.json().data.userid).to.eql(\"31\");\r",
+									"});\r",
+									"pm.test(\"Message is as expected\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.eql(\"Password has been changed successfully\");\r",
+									"});\r",
+									"pm.test(\"Status is true\", function () {\r",
+									"    pm.expect(pm.response.json().status).to.eql(true);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 3000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "31",
+									"type": "text"
+								},
+								{
+									"key": "newpassword",
+									"value": "Cybrain!123",
+									"type": "text"
+								},
+								{
+									"key": "confirmpassword",
+									"value": "Cybrain!123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{suburl}}/changepassword",
+							"host": [
+								"{{suburl}}"
+							],
+							"path": [
+								"changepassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pwd_length",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 3000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"pm.test(\"Password length should be more than 6 characters required\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.eql(\"Password length should be more than 6 characters required \");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{suburl}}/changepassword?userid=31&newpassword=Cybrain&confirmpassword=76667",
+							"host": [
+								"{{suburl}}"
+							],
+							"path": [
+								"changepassword"
+							],
+							"query": [
+								{
+									"key": "userid",
+									"value": "31"
+								},
+								{
+									"key": "newpassword",
+									"value": "Cybrain"
+								},
+								{
+									"key": "confirmpassword",
+									"value": "76667"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pwd_validation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 3000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"pm.test(\"Message is as expected ie. New password & Confirm password does not matched \", function () {\r",
+									"    pm.expect(pm.response.json().message).to.eql(\"New password & Confirm password does not matched \");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userid\":\"31\",\r\n    \"newpassword\":\"kalaiselvi\",\r\n    \"confirmpassword\":\"test8898\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{suburl}}/changepassword",
+							"host": [
+								"{{suburl}}"
+							],
+							"path": [
+								"changepassword"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Response time is less than 2000ms\", function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+					"});"
+				]
+			}
+		}
+	]
+}
